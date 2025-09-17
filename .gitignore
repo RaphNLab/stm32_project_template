@@ -1,0 +1,9 @@
+bin
+generated.*
+.ld
+.project
+.cproject
+*.bin
+*.elf
+build
+.vscode

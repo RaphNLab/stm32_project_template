@@ -1,0 +1,13 @@
+# Target labels
+ libopencm3_project
+# Source files and their labels
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles/libopencm3_project
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles/libopencm3_project.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles/libopencm3_project-complete.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-build.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-configure.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-download.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-install.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-mkdir.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-patch.rule
+/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-update.rule
