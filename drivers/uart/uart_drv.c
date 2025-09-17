@@ -1,6 +1,5 @@
 #include "uart_drv.h"
 #include "memory.h"
-#include "RE46C109_drv.h"
 /**
  * Data type, Constant and macro definitions
  *
@@ -203,7 +202,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 		if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T0])) == 0)
 		{
 			printf("Calibration T0 starts\n");
-			re46c109_runModeT0(config_reg);
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T1])) == 0)
 		{
@@ -229,37 +227,30 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 		else if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T6])) == 0)
 		{
 			printf("Serial Read/Write\n");
-			re46c109_runModeT6(config_reg);
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T7])) == 0)
 		{
 			printf("Norm Limitation check Start\n");
-			re46c109_runTest(VERIF_T7_MODE);
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T8])) == 0)
 		{
 			printf("Hysteresis Limitation check Start\n");
-			re46c109_runTest(VERIF_T8_MODE);
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T9])) == 0)
 		{
 			printf("Hush Limitation check Start\n");
-			re46c109_runTest(VERIF_T9_MODE);
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T10])) == 0)
 		{
 			printf("Ch Test limitation check Start\n");
-			re46c109_runTest(VERIF_T10_MODE);
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[RUN_T11])) == 0)
 		{
 			printf("Horn test start\n");
-			re46c109_testHorn();
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[CALIBRATE])) == 0)
 		{
 			printf("Calibration start\n");
-			re46c109_smokeCalibrate();
 		}
 		else if((strcasecmp(args[0], (const char*)uartCmdList[HELP])) == 0)
 		{
@@ -274,7 +265,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.ltd = arg;
 				printf("Long Term Drift Sample set to: %d\n", arg);
 			}
 		}
@@ -287,7 +277,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.ctl = arg;
 				printf("Chamber Test Limits set to: %d\n", arg);
 			}
 		}
@@ -300,7 +289,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.hush = arg;
 				printf("Hush Limits set to: %d\n", arg);
 			}
 		}
@@ -313,7 +301,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.hyl = arg;
 				printf("Hysteresis Limits set to: %d\n", arg);
 			}
 		}
@@ -326,7 +313,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.nl = arg;
 				printf("Normal Limits set to: %d\n", arg);
 			}
 		}
@@ -339,7 +325,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.pagf = arg;
 				printf("Photo Amplifier Gain Factor set to: %d\n", arg);
 			}
 		}
@@ -352,7 +337,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.it = arg;
 				printf("Integration Time set to: %d\n", arg);
 			}
 		}
@@ -365,7 +349,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.irc = arg;
 				printf("IRED Current set to: %d\n", arg);
 			}
 		}
@@ -377,7 +360,6 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			}
 			else 
 			{
-				config_reg.lb = arg; 
 				printf("Low Battery Trip Point set to: %d\n", arg);
 			}
 		}
@@ -386,12 +368,10 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			arg = atoi(args[1]);
 			if(arg == 1)
 			{
-				config_reg.ltde = arg;
 				printf("Long-Term Drift Enable\n");
 			}
 			else if(arg == 0)
 			{
-				config_reg.ltde = arg;
 				printf("Long-Term Drift Disable\n");
 			}
 			else
@@ -404,12 +384,10 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			arg = atoi(args[1]);
 			if(arg == 1)
 			{
-				config_reg.hush = arg;
 				printf("Hush Canceled\n");
 			}
 			else if(arg == 0)
 			{
-				config_reg.hush = arg;
 				printf("Hush Never Cancel\n");
 			}
 			else
@@ -422,12 +400,10 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			arg = atoi(args[1]);
 			if(arg == 1)
 			{
-				config_reg.lbh = arg;
 				printf("Low Battery Hush Enable\n");
 			}
 			else if(arg == 0)
 			{
-				config_reg.lbh = arg;
 				printf("Low Battery Hush Disable\n");
 			}
 			else
@@ -440,12 +416,10 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			arg = atoi(args[1]);
 			if(arg == 1)
 			{
-				config_reg.eol = arg;
 				printf("End of Life Enable\n");
 			}
 			else if(arg == 0)
 			{
-				config_reg.eol = arg;
 				printf("End of Life Disable\n");
 			}
 			else
@@ -458,12 +432,10 @@ void UartHandleCmd_Task(UartDev_T *uartDev)
 			arg = atoi(args[1]);
 			if(arg == 1)
 			{
-				config_reg.ts = arg;
 				printf("Temporal Horn Pattern\n");
 			}
 			else if(args[1] == 0)
 			{
-				config_reg.ts = arg;
 				printf("Continuous Horn Pattern\n");
 			}
 			else

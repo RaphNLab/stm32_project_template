@@ -15,6 +15,11 @@
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/timer.h>
 
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+
 #define ARR_SIZE(arr)	(sizeof(arr)/sizeof(arr[0]))
 
 #define STM32L1_NUCLEO

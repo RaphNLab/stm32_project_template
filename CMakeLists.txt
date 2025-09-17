@@ -17,8 +17,6 @@ set(CMAKE_TARGET_DEVICE stm32/l1)
 # Use toolchain
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/arm-gcc-toolchain.cmake)
 
-# Add FreeRTOS sources
-add_subdirectory(FreeRTOS)
 
 # C flags
 set(CMAKE_C_FLAGS "-Wall -Wextra -O2 -ffreestanding -nostartfiles -lm -mthumb -march=armv7-m -mtune=cortex-m3")
@@ -36,21 +34,24 @@ ExternalProject_Add(libopencm3_project
 
 # Set FreeRTOS sources
 set(FREERTOS_SRC
-    freertos/list.c
-    freertos/queue.c
-    freertos/tasks.c
-    freertos/timers.c
-    freertos/event_groups.c
-    freertos/stream_buffer.c
-    freertos/portable/MemMang/heap_4.c
-    freertos/portable/GCC/ARM_CM3/port.c
+    freeRTOS/source/croutine.c
+    freeRTOS/source/event_groups.c
+    freeRTOS/source/list.c
+    freeRTOS/source/queue.c
+    freeRTOS/source/tasks.c
+    freeRTOS/source/timers.c
+    
+    freeRTOS/source/stream_buffer.c
+    freeRTOS/portable/MemMang/heap_4.c
+    freeRTOS/portable/GCC/ARM_CM3/port.c
 )
 
 add_library(freertos ${FREERTOS_SRC})
 
 target_include_directories(freertos PUBLIC
-    freertos/include
-    freertos/portable/GCC/ARM_CM3
+    freeRTOS/config
+    freeRTOS/include
+    freeRTOS/portable/GCC/ARM_CM3
 )
 
 target_compile_definitions(freertos PUBLIC
@@ -65,8 +66,8 @@ add_executable(${EXECUTABLE}
         ${CMAKE_SOURCE_DIR}/src/main.c
         ${CMAKE_DRIVER_DIR}/gpio/led_driver.c
         ${CMAKE_DRIVER_DIR}/memory/mamory.c
-        ${CMAKE_DRIVER_DIR}/RE46C109/RE46C109_drv.c
         ${CMAKE_DRIVER_DIR}/systick/systick.c
+        ${CMAKE_DRIVER_DIR}/task_manager/task_manager.c
         ${CMAKE_DRIVER_DIR}/timer/timer_drv.c
         ${CMAKE_DRIVER_DIR}/uart/uart_drv.c        
 )
@@ -76,8 +77,8 @@ target_include_directories(${EXECUTABLE}  PRIVATE
     ${CMAKE_DRIVER_DIR}/global 
     ${CMAKE_DRIVER_DIR}/gpio
     ${CMAKE_DRIVER_DIR}/memory
-    ${CMAKE_DRIVER_DIR}/RE46C109
     ${CMAKE_DRIVER_DIR}/systick
+    ${CMAKE_DRIVER_DIR}/task_manager
     ${CMAKE_DRIVER_DIR}/timer
     ${CMAKE_DRIVER_DIR}/uart
     ${CMAKE_LIBOPENCM3_DIR}/include
