@@ -35,6 +35,7 @@ This template expose simple code for STM32L1 microcontroller.
 ## Update launch file
     * Open the launch.json file and update the executable name, openocd config and .svd file if necessary
     * Create new task if necessary
+    * Update CMakeList.txt  target device if necessary
 
 # Build and Test
     1. Open a new terminal
