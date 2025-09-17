@@ -83,14 +83,14 @@ CMakeFiles/libopencm3_project-complete: libopencm3_project-prefix/src/libopencm3
 
 libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-build: libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-configure
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Performing build step for 'libopencm3_project'"
-	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/libopencm3 && make TARGETS=stm32/l1
-	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/libopencm3 && /usr/bin/cmake -E touch /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-build
+	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3 && make TARGETS=stm32/l1
+	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3 && /usr/bin/cmake -E touch /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-build
 
 libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-configure: libopencm3_project-prefix/tmp/libopencm3_project-cfgcmd.txt
 libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-configure: libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-patch
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "No configure step for 'libopencm3_project'"
-	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/libopencm3 && /usr/bin/cmake -E echo_append
-	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/libopencm3 && /usr/bin/cmake -E touch /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-configure
+	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3 && /usr/bin/cmake -E echo_append
+	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3 && /usr/bin/cmake -E touch /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-configure
 
 libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-download: libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-mkdir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "No download step for 'libopencm3_project'"
@@ -99,13 +99,13 @@ libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-downlo
 
 libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-install: libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "No install step for 'libopencm3_project'"
-	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/libopencm3 && /usr/bin/cmake -E echo_append
-	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/libopencm3 && /usr/bin/cmake -E touch /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-install
+	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3 && /usr/bin/cmake -E echo_append
+	cd /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3 && /usr/bin/cmake -E touch /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-install
 
 libopencm3_project-prefix/src/libopencm3_project-stamp/libopencm3_project-mkdir:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Creating directories for 'libopencm3_project'"
-	/usr/bin/cmake -E make_directory /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/../libopencm3
-	/usr/bin/cmake -E make_directory /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/../libopencm3
+	/usr/bin/cmake -E make_directory /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3
+	/usr/bin/cmake -E make_directory /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3
 	/usr/bin/cmake -E make_directory /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix
 	/usr/bin/cmake -E make_directory /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/tmp
 	/usr/bin/cmake -E make_directory /home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/libopencm3_project-prefix/src/libopencm3_project-stamp

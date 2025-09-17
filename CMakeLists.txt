@@ -8,7 +8,7 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-set(CMAKE_LIBOPENCM3_DIR ${CMAKE_SOURCE_DIR}/../libopencm3)
+set(CMAKE_LIBOPENCM3_DIR ${CMAKE_SOURCE_DIR}/libopencm3)
 set(CMAKE_DRIVER_DIR ${CMAKE_SOURCE_DIR}/drivers)
 # Specify the device type
 add_definitions(-DSTM32L1)

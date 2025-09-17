@@ -188,7 +188,7 @@ RE46C109_Programmer.elf: CMakeFiles/RE46C109_Programmer.elf.dir/drivers/systick/
 RE46C109_Programmer.elf: CMakeFiles/RE46C109_Programmer.elf.dir/drivers/timer/timer_drv.c.obj
 RE46C109_Programmer.elf: CMakeFiles/RE46C109_Programmer.elf.dir/drivers/uart/uart_drv.c.obj
 RE46C109_Programmer.elf: CMakeFiles/RE46C109_Programmer.elf.dir/build.make
-RE46C109_Programmer.elf: ../libopencm3/lib/libopencm3_stm32l1.a
+RE46C109_Programmer.elf: libopencm3/lib/libopencm3_stm32l1.a
 RE46C109_Programmer.elf: CMakeFiles/RE46C109_Programmer.elf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/silvere/Work/Tuto/STM32_Projects/Libopencm3_projects/STM32_Project_Template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable RE46C109_Programmer.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RE46C109_Programmer.elf.dir/link.txt --verbose=$(VERBOSE)
