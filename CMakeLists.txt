@@ -17,6 +17,9 @@ set(CMAKE_TARGET_DEVICE stm32/l1)
 # Use toolchain
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/arm-gcc-toolchain.cmake)
 
+# Add FreeRTOS sources
+add_subdirectory(FreeRTOS)
+
 # C flags
 set(CMAKE_C_FLAGS "-Wall -Wextra -O2 -ffreestanding -nostartfiles -lm -mthumb -march=armv7-m -mtune=cortex-m3")
 
@@ -28,6 +31,30 @@ ExternalProject_Add(libopencm3_project
    BUILD_COMMAND make TARGETS=${CMAKE_TARGET_DEVICE}
    BUILD_IN_SOURCE 1
    INSTALL_COMMAND ""
+)
+
+
+# Set FreeRTOS sources
+set(FREERTOS_SRC
+    freertos/list.c
+    freertos/queue.c
+    freertos/tasks.c
+    freertos/timers.c
+    freertos/event_groups.c
+    freertos/stream_buffer.c
+    freertos/portable/MemMang/heap_4.c
+    freertos/portable/GCC/ARM_CM3/port.c
+)
+
+add_library(freertos ${FREERTOS_SRC})
+
+target_include_directories(freertos PUBLIC
+    freertos/include
+    freertos/portable/GCC/ARM_CM3
+)
+
+target_compile_definitions(freertos PUBLIC
+    -DportUSE_STARTUP_HOOK=1   # example if needed
 )
 
 # Add include dir
@@ -61,8 +88,8 @@ add_dependencies(${EXECUTABLE} libopencm3_project)
 
 # Link against pre-built libopencm3.a
 target_link_libraries(${EXECUTABLE}
+    freertos
     ${CMAKE_LIBOPENCM3_DIR}/lib/libopencm3_stm32l1.a
-    m
 )
 
 # Compiler options
