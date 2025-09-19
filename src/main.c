@@ -4,8 +4,6 @@
 #include "led_driver.h"
 
 
-
-
 int main(void)
 {
 	sleep_config();
@@ -13,7 +11,11 @@ int main(void)
 
 	uartDevConfig(&myUartDev, MY_USART_DEVICE, uartRxBuffer, uartTxBuffer, USART_DATA_LEN);
 
-	xTaskCreate(vUartCmdTaskHandler, "Command handler", 500, NULL, 2, &xuartTaskHandle);
+	xTaskCreate(vledTaskHandler, "LED handler", 250, NULL, 1, NULL);
 
+	xTaskCreate(vUartCmdTaskHandler, "Command handler", 250, NULL, 1, NULL);
+
+	printf("Programm start\n");
+	vTaskStartScheduler();
 	while (1);
 }

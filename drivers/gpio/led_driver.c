@@ -22,9 +22,12 @@
 */
 void led_config(void)
 {
+	rcc_periph_clock_enable(RCC_GPIOA);
 	rcc_periph_clock_enable(RCC_GPIOD);
+
 	/* Set GPIO6 (in GPIO port B) to 'output push-pull'. */
 	gpio_mode_setup(GPIOD, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, (GREEN_LED | ORANGE_LED | RED_LED | BLUE_LED));
+	gpio_mode_setup(PORT_LED_VERTE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LED_VERTE);
 }
 
 /**

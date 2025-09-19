@@ -48,15 +48,16 @@ set(FREERTOS_SRC
 
 add_library(freertos ${FREERTOS_SRC})
 
+include_directories(${CMAKE_SOURCE_DIR})
 target_include_directories(freertos PUBLIC
     freeRTOS/config
     freeRTOS/include
     freeRTOS/portable/GCC/ARM_CM3
 )
 
-target_compile_definitions(freertos PUBLIC
-    -DportUSE_STARTUP_HOOK=1   # example if needed
-)
+#target_compile_definitions(freertos PUBLIC
+#    -DportUSE_STARTUP_HOOK=1   # example if needed
+#)
 
 # Add include dir
 include_directories(${CMAKE_LIBOPENCM3_INCLUDE_DIR})

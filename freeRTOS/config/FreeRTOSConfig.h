@@ -32,14 +32,20 @@
 /******************************************************************************/
 /* Hardware description related definitions. **********************************/
 /******************************************************************************/
+/* Ensure stdint is only used by the compiler, and not the assembler. */
+#if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)
+ #include <stdint.h>
+#endif
 
-#define configCPU_CLOCK_HZ    ( ( unsigned long ) 20000000 )
+
+#define configCPU_CLOCK_HZ                          ( ( unsigned long ) 32000000 )
+#define configSYSTICK_CLOCK_HZ		                ( configCPU_CLOCK_HZ / 8 )
 
 /******************************************************************************/
 /* Scheduling behaviour related definitions. **********************************/
 /******************************************************************************/
 
-#define configTICK_RATE_HZ                         ( ( TickType_t ) 100U )
+#define configTICK_RATE_HZ                         ( ( TickType_t ) 250U )
 #define configUSE_PREEMPTION                       1
 #define configUSE_TIME_SLICING                     1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION    0
@@ -73,7 +79,7 @@
 #define configSUPPORT_STATIC_ALLOCATION              1
 #define configSUPPORT_DYNAMIC_ALLOCATION             1
 #define configTOTAL_HEAP_SIZE                        ( ( size_t ) ( 10 * 1024U ) )
-#define configAPPLICATION_ALLOCATED_HEAP             1
+#define configAPPLICATION_ALLOCATED_HEAP             0
 #define configSTACK_ALLOCATION_FROM_SEPARATE_HEAP    0
 #define configUSE_MINI_LIST_ITEM                     0
 
@@ -81,7 +87,7 @@
 /* Interrupt nesting behaviour configuration. *********************************/
 /******************************************************************************/
 
-#define configKERNEL_INTERRUPT_PRIORITY          0U
+#define configKERNEL_INTERRUPT_PRIORITY          255U
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY     0U
 #define configMAX_API_CALL_INTERRUPT_PRIORITY    0U
 
@@ -114,20 +120,28 @@
 #define configUSE_COUNTING_SEMAPHORES          1
 #define configUSE_QUEUE_SETS                   1
 #define configUSE_APPLICATION_TASK_TAG         1
-#define INCLUDE_vTaskPrioritySet               1
-#define INCLUDE_uxTaskPriorityGet              1
+#define INCLUDE_vTaskPrioritySet               0
+#define INCLUDE_uxTaskPriorityGet              0
 #define INCLUDE_vTaskDelete                    1
 #define INCLUDE_vTaskSuspend                   1
 #define INCLUDE_vTaskDelayUntil                1
 #define INCLUDE_vTaskDelay                     1
-#define INCLUDE_xTaskGetSchedulerState         1
+#define INCLUDE_xTaskGetSchedulerState         0
 #define INCLUDE_xTaskGetCurrentTaskHandle      1
-#define INCLUDE_uxTaskGetStackHighWaterMark    1
-#define INCLUDE_xTaskGetIdleTaskHandle         1
+#define INCLUDE_uxTaskGetStackHighWaterMark    0
+#define INCLUDE_xTaskGetIdleTaskHandle         0
 #define INCLUDE_eTaskGetState                  1
-#define INCLUDE_xTimerPendFunctionCall         1
-#define INCLUDE_xTaskAbortDelay                1
+#define INCLUDE_xTimerPendFunctionCall         0
+#define INCLUDE_xTaskAbortDelay                0
 #define INCLUDE_xTaskGetHandle                 1
 #define INCLUDE_xTaskResumeFromISR             1
+
+
+/* This is the value being used as per the ST library which permits 16
+priority values, 0 to 15.  This must correspond to the
+configKERNEL_INTERRUPT_PRIORITY setting.  Here 15 corresponds to the lowest
+NVIC value of 255. */
+#define configLIBRARY_KERNEL_INTERRUPT_PRIORITY	15
+
 
 #endif /* FREERTOS_CONFIG_H */

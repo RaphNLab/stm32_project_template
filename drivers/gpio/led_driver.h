@@ -9,6 +9,8 @@
 #define RED_LED		GPIO14
 #define BLUE_LED	GPIO15
 
+#define PORT_LED_VERTE GPIOA
+#define LED_VERTE GPIO5
 
 typedef enum
 {

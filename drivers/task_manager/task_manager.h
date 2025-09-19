@@ -7,10 +7,11 @@
 
 #include "global.h"
 
-
 #ifndef INCLUDES_TASK_MANAGER_H_
 #define INCLUDES_TASK_MANAGER_H_
 
+extern TaskHandle_t xledTaskHandle;
+extern TaskHandle_t xuartTaskHandle;
 
 typedef enum
 {
@@ -21,10 +22,8 @@ typedef enum
 }TaskType_T;
 
 
-extern TaskHandle_t xuartTaskHandle;
-
-
 /* functions prototypes */
 void vUartCmdTaskHandler(void *params);
+void vledTaskHandler(void *params);
 
 #endif /* INCLUDES_TASK_MANAGER_H_ */
