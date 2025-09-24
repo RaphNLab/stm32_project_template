@@ -56,9 +56,6 @@ target_include_directories(freertos PUBLIC
     ${CMAKE_FREERTOS_DIR}/portable/GCC/ARM_CM3
 )
 
-#target_compile_definitions(freertos PUBLIC
-#    -DportUSE_STARTUP_HOOK=1   # example if needed
-#)
 
 # Add include dir
 include_directories(${CMAKE_LIBOPENCM3_INCLUDE_DIR})
@@ -95,7 +92,6 @@ target_link_libraries(${EXECUTABLE}
 target_compile_options(${EXECUTABLE} PRIVATE
         -mtune=cortex-m3
         -mthumb
-
         -fdata-sections
         -ffunction-sections
         -Wall

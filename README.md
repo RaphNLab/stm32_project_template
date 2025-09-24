@@ -44,11 +44,17 @@ This template expose simple code for STM32L1 microcontroller.
 
 # Build and Test
     1. Open a new terminal
-    2. Enter: ``` cmake -DCMAKE_TOOLCHAIN_FILE=cmake/arm-gcc-toolchain.cmake -B build -B build ``` to create build directory with respective toolchain
-    2. Configure FreeRTOS
-    2.	Run clean & build task to compile
-    3.	Press F5 to start debugging session
-    4.	rum cmake... to flash the microcontroller
+    2. To create build directory with respective toolchain
+        * Run ``` cmake -DCMAKE_TOOLCHAIN_FILE=cmake/arm-gcc-toolchain.cmake -B build -B build ```
+    3. Configure FreeRTOS (FreeRTOSConfig.h) if nedded. 
+    4.	On a terminal
+        * Run cmake --build . --clean-first to clean an build the project
+        * Run cmake --build . --target flash to flash the CPU
+    5. On VS-Code 
+        * Run "clean&build" task to compile
+        * Run "flash" task to flash the CPU 
+        * Press F5 to start debugging session
+    6.	rum cmake... to flash the microcontroller
 
 # Contribute
 If you desire to contribute to this project, clone the code and feel free to modify 
