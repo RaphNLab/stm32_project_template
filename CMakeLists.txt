@@ -10,6 +10,8 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 set(CMAKE_LIBOPENCM3_DIR ${CMAKE_SOURCE_DIR}/libopencm3)
 set(CMAKE_DRIVER_DIR ${CMAKE_SOURCE_DIR}/drivers)
+set(CMAKE_FREERTOS_DIR ${CMAKE_SOURCE_DIR}/freeRTOS)
+
 # Specify the device type
 add_definitions(-DSTM32L1)
 set(CMAKE_TARGET_DEVICE stm32/l1)
@@ -34,25 +36,24 @@ ExternalProject_Add(libopencm3_project
 
 # Set FreeRTOS sources
 set(FREERTOS_SRC
-    freeRTOS/source/croutine.c
-    freeRTOS/source/event_groups.c
-    freeRTOS/source/list.c
-    freeRTOS/source/queue.c
-    freeRTOS/source/tasks.c
-    freeRTOS/source/timers.c
+    ${CMAKE_FREERTOS_DIR}/source/croutine.c
+    ${CMAKE_FREERTOS_DIR}/source/event_groups.c
+    ${CMAKE_FREERTOS_DIR}/source/list.c
+    ${CMAKE_FREERTOS_DIR}/source/queue.c
+    ${CMAKE_FREERTOS_DIR}/source/tasks.c
+    ${CMAKE_FREERTOS_DIR}/source/timers.c
     
-    freeRTOS/source/stream_buffer.c
-    freeRTOS/portable/MemMang/heap_4.c
-    freeRTOS/portable/GCC/ARM_CM3/port.c
+    ${CMAKE_FREERTOS_DIR}/portable/MemMang/heap_4.c
+    ${CMAKE_FREERTOS_DIR}/portable/GCC/ARM_CM3/port.c
 )
 
 add_library(freertos ${FREERTOS_SRC})
 
 include_directories(${CMAKE_SOURCE_DIR})
 target_include_directories(freertos PUBLIC
-    freeRTOS/config
-    freeRTOS/include
-    freeRTOS/portable/GCC/ARM_CM3
+    ${CMAKE_FREERTOS_DIR}/config
+    ${CMAKE_FREERTOS_DIR}/include
+    ${CMAKE_FREERTOS_DIR}/portable/GCC/ARM_CM3
 )
 
 #target_compile_definitions(freertos PUBLIC
@@ -64,13 +65,11 @@ include_directories(${CMAKE_LIBOPENCM3_INCLUDE_DIR})
 
 # Executable target
 add_executable(${EXECUTABLE} 
-        ${CMAKE_SOURCE_DIR}/src/main.c
-        ${CMAKE_DRIVER_DIR}/gpio/led_driver.c
-        ${CMAKE_DRIVER_DIR}/memory/mamory.c
-        ${CMAKE_DRIVER_DIR}/systick/systick.c
-        ${CMAKE_DRIVER_DIR}/task_manager/task_manager.c
-        ${CMAKE_DRIVER_DIR}/timer/timer_drv.c
-        ${CMAKE_DRIVER_DIR}/uart/uart_drv.c        
+    ${CMAKE_SOURCE_DIR}/src/main.c
+    ${CMAKE_DRIVER_DIR}/gpio/led_driver.c
+    ${CMAKE_DRIVER_DIR}/memory/mamory.c
+    ${CMAKE_DRIVER_DIR}/task_manager/task_manager.c
+    ${CMAKE_DRIVER_DIR}/uart/uart_drv.c        
 )
 
 # Add header path to target
@@ -78,9 +77,7 @@ target_include_directories(${EXECUTABLE}  PRIVATE
     ${CMAKE_DRIVER_DIR}/global 
     ${CMAKE_DRIVER_DIR}/gpio
     ${CMAKE_DRIVER_DIR}/memory
-    ${CMAKE_DRIVER_DIR}/systick
     ${CMAKE_DRIVER_DIR}/task_manager
-    ${CMAKE_DRIVER_DIR}/timer
     ${CMAKE_DRIVER_DIR}/uart
     ${CMAKE_LIBOPENCM3_DIR}/include
 )
