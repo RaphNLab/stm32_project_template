@@ -10,37 +10,17 @@ extern void vApplicationStackOverflowHook(TaskHandle_t xTask
 
 int main(void)
 {
-	rcc_clock_setup_pll(&rcc_clock_config
-		[RCC_CLOCK_VRANGE1_HSI_PLL_32MHZ]);
+ 	rcc_clock_setup_pll(&rcc_clock_config
+		[RCC_CLOCK_VRANGE1_HSI_PLL_24MHZ]);
 
 	led_config();
 
 	uartDevConfig(&myUartDev, MY_USART_DEVICE, 
 		uartRxBuffer, uartTxBuffer, USART_DATA_LEN);
 
-	BaseType_t r1 = xTaskCreate(vledTaskHandler, 
-		"LED handler", 250, NULL, 1, NULL);
-	if (r1 != pdPASS) {
-		// Task creation failed
-		printf("LED Task creation failed");
-	}
-
-	BaseType_t r2 = xTaskCreate(vUartCmdTaskHandler, 
-		"Command handler", 250, NULL, 1, NULL);
-	if (r2 != pdPASS) {
-		// Task creation failed
-		printf("UART Task creation failed");
-	}
-
-	printf("CPU CLK: %ld\n", rcc_ahb_frequency);
-	printf("Programm start\n");
+	vInitTask();
 	
 	vTaskStartScheduler();
-
-	if(xTaskGetSchedulerState() != taskSCHEDULER_RUNNING)
-	{
-		printf("Scheduler not started\n");
-	}
 
 	for (;;);
 }
@@ -48,7 +28,5 @@ int main(void)
 void vApplicationStackOverflowHook(TaskHandle_t xTask 
 	__attribute((unused)), char *pcTaskName __attribute((unused)))
 {
-    // handle error, maybe blink LED fast
-	printf("Stack overflow\n");
     for (;;);
 }

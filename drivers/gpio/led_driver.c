@@ -23,7 +23,7 @@
 void led_config(void)
 {
 	rcc_periph_clock_enable(RCC_GPIOA);
-	gpio_mode_setup(PORT_LED_VERTE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LED_VERTE);
+	gpio_mode_setup(GREEN_LED_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GREEN_LED_PIN);
 }
 
 

@@ -4,19 +4,9 @@
 #include "global.h"
 //#include "timer_drv.h"
 
-#define GREEN_LED	GPIO12
-#define ORANGE_LED	GPIO13
-#define RED_LED		GPIO14
-#define BLUE_LED	GPIO15
+#define GREEN_LED_PORT GPIOA
+#define GREEN_LED_PIN GPIO5
 
-#define PORT_LED_VERTE GPIOA
-#define LED_VERTE GPIO5
-
-typedef enum
-{
-	LED_LEFT = 0,
-	LED_RIGTH
-}blink_dir_t;
 
 void led_config(void);
 

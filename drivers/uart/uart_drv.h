@@ -86,7 +86,6 @@ extern UartDev_T myUartDev;
 extern char *uartCmdList[];
 
 void uartDevConfig(UartDev_T *uartDev, uint32_t uartBase, uint8_t *rxBuffer, uint8_t *txBuffer, uint8_t size);
-void UartHandleCmd_Task(UartDev_T *uartDev);
 void printMenu(void);
 
 
