@@ -7,7 +7,7 @@
 
 
 set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_SYSTEM_PROCESSOR cortex-m3)  # STM32L152RE → Cortex-M3
+set(CMAKE_SYSTEM_PROCESSOR cortex-m4)  # STM32F767ZIT6U/ → Cortex-M4
 
 set(TOOLCHAIN_PREFIX arm-none-eabi-)
 # set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)

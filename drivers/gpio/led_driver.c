@@ -1,4 +1,5 @@
 #include "led_driver.h"
+#include "systick.h"
 
 
 /**
@@ -45,7 +46,7 @@ void led_ring(uint16_t delay, blink_dir_t direction)
 				for(uint8_t j = 0; j < 4; j++)
 				{
 					gpio_toggle(GPIOD, (led_num));
-					sleep_ms(delay);
+					msleep(delay);
 					led_num = (led_num * 2);
 				}
 			}
@@ -56,7 +57,7 @@ void led_ring(uint16_t delay, blink_dir_t direction)
 				for(uint8_t j = 0; j < 4; j++)
 				{
 					gpio_toggle(GPIOD, (led_num));
-					sleep_ms(delay);
+					msleep(delay);
 					led_num = (led_num / 2);
 				}
 			}
@@ -72,7 +73,7 @@ void led_ring(uint16_t delay, blink_dir_t direction)
 void led_heart_beat(uint16_t delay)
 {
 	gpio_toggle(GPIOD, (GREEN_LED | ORANGE_LED | RED_LED | BLUE_LED));
-	sleep_ms(delay);
+	msleep(delay);
 }
 
 
