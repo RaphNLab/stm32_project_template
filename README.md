@@ -34,7 +34,10 @@ This template expose simple code for STM32L1 microcontroller.
         ```
 ## Update launch file
     * Open the launch.json file and update the executable name, openocd config and .svd file if necessary
+    * Edit the target .cfg file. Almost all config files are located in
+    "/usr/share/openocd/scripts/board/" directory
     * Create new task if necessary
+    * You can find the corresponding .svg file [here](https://github.com/modm-io/cmsis-svd-stm32)
 
 # Build and Test
     1. Open a new terminal
@@ -47,3 +50,5 @@ This template expose simple code for STM32L1 microcontroller.
 # Contribute
 If you desire to contribute to this project, clone the code and feel free to modify 
 and push your changes for improvement.
+
+
